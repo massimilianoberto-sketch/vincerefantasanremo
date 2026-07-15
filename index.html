@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Come Vincere al Fantasanremo — La guida per battere i tuoi colleghi</title>
+<meta name="description" content="La guida pratica per vincere la tua lega di Fantasanremo. Strategie, capitano, colpi a sorpresa. Parte del ricavato va in beneficenza.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nero: #0b0b0c;
+    --nero-2: #141416;
+    --giallo: #ffc700;
+    --panna: #f5f3ee;
+    --grigio: #948f88;
+    --corallo: #ff5a36;
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--nero);
+    color: var(--panna);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  a { color: inherit; }
+
+  /* ===== NAV ===== */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(11,11,12,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .nav .logo {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+  }
+  .nav .logo span { color: var(--giallo); }
+  .nav-cta {
+    background: var(--giallo);
+    color: var(--nero);
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 10px 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 150px 0 90px;
+    position: relative;
+  }
+  .hero-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-stack .scoreboard {
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 44px;
+  }
+  .hero-stack .hero-copy {
+    max-width: 640px;
+  }
+  .hero-stack .lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-stack .hero-ctas {
+    justify-content: center;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--nero-2);
+    border: 1px solid rgba(255,199,0,0.35);
+    color: var(--giallo);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--giallo);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 74px);
+    color: var(--panna);
+  }
+  .hero h1 .hi { color: var(--giallo); }
+  .hero p.lead {
+    margin-top: 22px;
+    font-size: 18px;
+    color: var(--grigio);
+    max-width: 46ch;
+  }
+  .hero-ctas {
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--giallo);
+    color: var(--nero);
+    font-weight: 800;
+    font-size: 15px;
+    padding: 16px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid rgba(245,243,238,0.25);
+    color: var(--panna);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* scoreboard signature element */
+  .scoreboard {
+    background: var(--nero-2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 20px;
+    position: relative;
+  }
+  .scoreboard-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grigio);
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(255,255,255,0.12);
+    margin-bottom: 4px;
+  }
+  .book-mock {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 14px;
+    background: linear-gradient(135deg, #1c1c1e, #0b0b0c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .book-mock img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .book-mock .fallback {
+    text-align: center;
+    padding: 24px;
+    color: rgba(245,243,238,0.35);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .rank-chip {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--giallo);
+    color: var(--nero);
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    line-height: 1;
+    z-index: 2;
+  }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 90px 0; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--giallo);
+    margin-bottom: 14px;
+  }
+  h2.display {
+    font-size: clamp(32px, 4.2vw, 48px);
+    margin-bottom: 20px;
+  }
+  .text-col { max-width: 62ch; }
+  .text-col p { color: var(--grigio); font-size: 17px; margin-bottom: 16px; }
+
+  /* ===== COSA C'E' NEL LIBRO ===== */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 40px;
+  }
+  .feature {
+    background: var(--nero);
+    padding: 30px 26px;
+  }
+  .feature .num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--giallo);
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .feature h3 {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+  }
+  .feature p { color: var(--grigio); font-size: 15px; }
+
+  /* ===== BENEFICENZA ===== */
+  .charity {
+    background: var(--nero-2);
+    border-radius: 24px;
+    padding: 64px;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .thai-photo {
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #3a2a12, #0b0b0c);
+    position: relative;
+  }
+  .thai-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+  .thai-photo .fallback {
+    position: absolute; inset: 0;
+    display:flex; align-items:center; justify-content:center;
+    color: rgba(245,243,238,0.35);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-align: center;
+    padding: 24px;
+  }
+  .thai-caption {
+    font-size: 12px;
+    color: var(--grigio);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 12px;
+    text-align: center;
+  }
+  .charity blockquote {
+    font-family: 'Anton', sans-serif;
+    text-transform: none;
+    font-size: 26px;
+    line-height: 1.25;
+    color: var(--giallo);
+    margin: 18px 0 20px;
+  }
+  .charity .attribution {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--grigio);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== BOT TEASER ===== */
+  .bot {
+    text-align: center;
+  }
+  .bot .badge {
+    display: inline-block;
+    border: 1px solid rgba(255,199,0,0.4);
+    color: var(--giallo);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .bot h2 { max-width: 20ch; margin: 0 auto 18px; }
+  .bot p.lead { max-width: 50ch; margin: 0 auto; color: var(--grigio); font-size: 17px; }
+
+  /* ===== CTA FINALE ===== */
+  .final-cta {
+    background: var(--giallo);
+    border-radius: 24px;
+    padding: 70px 48px;
+    text-align: center;
+    color: var(--nero);
+  }
+  .final-cta h2 { color: var(--nero); font-size: clamp(30px, 4.5vw, 48px); max-width: 18ch; margin: 0 auto 18px; }
+  .final-cta p { color: rgba(11,11,12,0.7); font-size: 17px; max-width: 44ch; margin: 0 auto 30px; }
+  .final-cta .btn-primary { background: var(--nero); color: var(--panna); }
+  .final-cta .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    margin-top: 16px;
+    color: rgba(11,11,12,0.6);
+  }
+  .form-embed {
+    background: var(--nero);
+    border-radius: 16px;
+    padding: 14px;
+    display: inline-block;
+    max-width: 100%;
+  }
+  .form-embed iframe {
+    border-radius: 8px;
+    background: var(--panna);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 0;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--grigio);
+  }
+  .footer-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--panna);
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+  .footer-social:hover { color: var(--giallo); }
+  .footer-social svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ===== REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 860px) {
+    .charity { grid-template-columns: 1fr; padding: 36px 26px; }
+    .features { grid-template-columns: 1fr; }
+    .final-cta { padding: 48px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Come Vincere<span>.</span></div>
+    <a href="#libro" class="nav-cta">Prendi il libro</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap hero-stack">
+      <div class="scoreboard reveal">
+        <div class="scoreboard-head">
+          <span>Classifica lega</span>
+          <span>Sanremo 2027</span>
+        </div>
+        <div class="book-mock">
+          <!-- SOSTITUISCI: rinomina la tua foto mockup in mockup-libro.jpg e caricala nella stessa cartella di questo file -->
+          <img src="mockup-libro.jpg" alt="Mockup del libro Come vincere al Fantasanremo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="fallback" style="display:none;">Carica qui mockup-libro.jpg</div>
+          <div class="rank-chip">1°</div>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Edizione Sanremo 2027</div>
+        <h1 class="display">Come vincere<br>al <span class="hi">Fantasanremo</span><br>e battere i tuoi colleghi</h1>
+        <p class="lead">La guida pratica per chi vuole smettere di improvvisare la formazione e iniziare a vincere davvero. Capitano, tempistiche, errori da evitare. Tutto quello che serve, in un libro.</p>
+        <div class="hero-ctas">
+          <a href="#libro" class="btn-primary">Scopri il libro — 2,99€</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BENEFICENZA ===== -->
+  <section id="beneficenza">
+    <div class="wrap">
+      <div class="charity reveal">
+        <div>
+          <div class="thai-photo">
+            <!-- SOSTITUISCI: rinomina la tua foto in thailandia.jpg -->
+            <img src="thailandia.jpg" alt="Progetto benefico in Thailandia" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="fallback">Carica qui thailandia.jpg</div>
+          </div>
+          <div class="thai-caption mono">Il ricavato del libro va in beneficenza</div>
+        </div>
+        <div>
+          <div class="section-label">Perché esiste questo progetto</div>
+          <blockquote>Cosa c'entra la Thailandia con il Fantasanremo?</blockquote>
+          <p style="color: var(--grigio); font-size: 16px; margin-bottom: 20px;">Il ricavato del libro, fino a un obiettivo prefissato, va a sostenere un progetto benefico in Thailandia, nato durante il viaggio di nozze con mia moglie Sara. Il Fantasanremo è un gioco gratuito: farlo diventare qualcosa di utile, anche fuori dalla classifica, ci è sembrato il modo giusto per raccontarlo.</p>
+          <div class="attribution">Massimiliano Berto — autore</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COSA CONTIENE ===== -->
+  <section id="libro">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="section-label">Il libro</div>
+        <h2 class="display">Non un altro riassunto<br>delle regole.</h2>
+        <div class="text-col">
+          <p>Le regole del Fantasanremo le trovi ovunque gratis. Qui trovi la strategia: come si costruisce una rosa che regge tutta la settimana, quando muovere il capitano, quali errori fanno perdere la lega ogni anno agli stessi colleghi.</p>
+        </div>
+      </div>
+
+      <div class="features reveal">
+        <div class="feature">
+          <div class="num mono">01</div>
+          <h3>Prima delle iscrizioni</h3>
+          <p>Cosa preparare mentre gli altri aspettano l'annuncio dei big.</p>
+        </div>
+        <div class="feature">
+          <div class="num mono">02</div>
+          <h3>Il capitano giusto</h3>
+          <p>Come si sceglie e quando conviene cambiarlo in corsa.</p>
+        </div>
+        <div class="feature">
+          <div class="num mono">03</div>
+          <h3>Errori comuni</h3>
+          <p>Le scelte che sembrano furbe e che invece affondano la classifica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOT TEASER ===== -->
+  <section class="bot">
+    <div class="wrap reveal">
+      <div class="badge">Contenuto extra riservato ai lettori</div>
+      <h2 class="display">Il libro ti dà il metodo.<br>Poi c'è il bot.</h2>
+      <p class="lead">Nell'ultimo capitolo scopri come sbloccare il bot AI che controlla la tua squadra: budget, malus, formazione regolare, tutto verificato in tempo reale. Prima il metodo, poi lo strumento: l'accesso al bot è riservato a chi ha già letto il libro.</p>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINALE ===== -->
+  <section>
+    <div class="wrap">
+      <div class="final-cta reveal">
+        <h2 class="display">Vinci la tua lega, per una volta.</h2>
+        <p>Il libro sta per uscire. Lascia la tua email: ti avviso appena è disponibile su Amazon.</p>
+
+        <!-- FASE PRELANCIO: form iscrizione email. Quando il libro è live, cancella il div "form-embed" qui sotto e scommenta il blocco "POST-LANCIO". -->
+        <div class="form-embed">
+          <iframe width="540" height="305" src="https://5cb5fea0.sibforms.com/v2/serve/MUIFADvaFvMnLNqLwBj6pJeu8eKt4nwWX5tfC4zUGciCydE1lbtpALrC5AqItCnqeAxT4e5mhNDcz_zZpscB1NPpwJYn_tx2tXIov_J1-iDJw-zVmjtVIs5go4-XzewqwK8XuqdkiebvPQg2MNZIqEbUH_MYuEN41M6O0bmgkkf2r4XK3DoIGyBfqfAFl_oWJ8mU3KtiJgVlR2yyLQ==" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+        </div>
+
+        <!-- POST-LANCIO: scommenta questo blocco e rimuovi il form-embed qui sopra quando hai il link Amazon
+        <a href="#" class="btn-primary">Prendi il libro su Amazon</a>
+        <div class="price">2,99€ — parte del ricavato in beneficenza</div>
+        -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>© 2027 Come Vincere al Fantasanremo</div>
+    <!-- SOSTITUISCI l'href con l'URL reale del tuo profilo Instagram -->
+    <a href="https://instagram.com/comevincerealfantasanremo" target="_blank" rel="noopener" class="footer-social">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4.2"/>
+        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
+      </svg>
+      Seguici su Instagram per tips e strategie
+    </a>
+    <div>Massimiliano Berto</div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(i => io.observe(i));
+</script>
+
+</body>
+</html>
