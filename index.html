@@ -98,7 +98,7 @@
     align-items: center;
     text-align: center;
   }
-  .hero-stack .scoreboard {
+  .hero-stack .hero-photo {
     width: 100%;
     max-width: 380px;
     margin-bottom: 44px;
@@ -174,30 +174,9 @@
     display: inline-block;
   }
 
-  /* scoreboard signature element */
-  .scoreboard {
-    background: var(--nero-2);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--radius);
-    padding: 20px;
-    position: relative;
-  }
-  .scoreboard-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--grigio);
-    padding-bottom: 14px;
-    border-bottom: 1px dashed rgba(255,255,255,0.12);
-    margin-bottom: 4px;
-  }
   .book-mock {
     position: relative;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 16 / 9;
     border-radius: 10px;
     overflow: hidden;
     margin-top: 14px;
@@ -217,18 +196,6 @@
     color: rgba(245,243,238,0.35);
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-  }
-  .rank-chip {
-    position: absolute;
-    top: 14px; left: 14px;
-    background: var(--giallo);
-    color: var(--nero);
-    font-family: 'Anton', sans-serif;
-    font-size: 22px;
-    padding: 6px 12px;
-    border-radius: 8px;
-    line-height: 1;
-    z-index: 2;
   }
 
   /* ===== SECTION SHARED ===== */
@@ -365,15 +332,19 @@
     color: rgba(11,11,12,0.6);
   }
   .form-embed {
-    background: var(--nero);
+    background: #ffffff;
     border-radius: 16px;
-    padding: 14px;
-    display: inline-block;
+    padding: 0;
+    width: 540px;
     max-width: 100%;
+    overflow: hidden;
+    display: inline-block;
   }
   .form-embed iframe {
-    border-radius: 8px;
-    background: var(--panna);
+    display: block;
+    width: 100%;
+    height: 305px;
+    border: none;
   }
 
   /* ===== FOOTER ===== */
@@ -431,7 +402,7 @@
 <header>
   <div class="nav">
     <div class="logo">Come Vincere<span>.</span></div>
-    <a href="#libro" class="nav-cta">Prendi il libro</a>
+    <a href="#form" class="nav-cta">Prendi il libro</a>
   </div>
 </header>
 
@@ -440,16 +411,11 @@
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="wrap hero-stack">
-      <div class="scoreboard reveal">
-        <div class="scoreboard-head">
-          <span>Classifica lega</span>
-          <span>Sanremo 2027</span>
-        </div>
+      <div class="hero-photo reveal">
         <div class="book-mock">
           <!-- SOSTITUISCI: rinomina la tua foto mockup in mockup-libro.jpg e caricala nella stessa cartella di questo file -->
           <img src="mockup-libro.jpg" alt="Mockup del libro Come vincere al Fantasanremo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="fallback" style="display:none;">Carica qui mockup-libro.jpg</div>
-          <div class="rank-chip">1°</div>
         </div>
       </div>
 
@@ -458,7 +424,7 @@
         <h1 class="display">Come vincere<br>al <span class="hi">Fantasanremo</span><br>e battere i tuoi colleghi</h1>
         <p class="lead">La guida pratica per chi vuole smettere di improvvisare la formazione e iniziare a vincere davvero. Capitano, tempistiche, errori da evitare. Tutto quello che serve, in un libro.</p>
         <div class="hero-ctas">
-          <a href="#libro" class="btn-primary">Scopri il libro — 2,99€</a>
+          <a href="#form" class="btn-primary">Scopri il libro — 2,99€</a>
         </div>
       </div>
     </div>
@@ -472,7 +438,7 @@
           <div class="thai-photo">
             <!-- SOSTITUISCI: rinomina la tua foto in thailandia.jpg -->
             <img src="thailandia.jpg" alt="Progetto benefico in Thailandia" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="fallback">Carica qui thailandia.jpg</div>
+            <div class="fallback" style="display:none;">Carica qui thailandia.jpg</div>
           </div>
           <div class="thai-caption mono">Il ricavato del libro va in beneficenza</div>
         </div>
@@ -527,7 +493,7 @@
   </section>
 
   <!-- ===== CTA FINALE ===== -->
-  <section>
+  <section id="form">
     <div class="wrap">
       <div class="final-cta reveal">
         <h2 class="display">Vinci la tua lega, per una volta.</h2>
