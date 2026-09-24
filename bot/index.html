@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics 4 (stesso ID della landing) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H9270RWDP1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H9270RWDP1');
+</script>
+<title>Il bot di Come Vincere al Fantasanremo — Un secondo parere sulla tua squadra</title>
+<meta name="description" content="Il bot AI che completa il libro: gli mandi la tua squadra di Fantasanremo e ti risponde con il metodo del libro. Attivo da dicembre a fine Festival.">
+<link rel="canonical" href="https://comevincerealfantasanremo.it/bot/">
+
+<!-- Open Graph / anteprima WhatsApp, Facebook, Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://comevincerealfantasanremo.it/bot/">
+<meta property="og:title" content="Il bot di Come Vincere al Fantasanremo">
+<meta property="og:description" content="Gli mandi la tua squadra, ti risponde con il metodo del libro. Attivo da dicembre a fine Festival.">
+<meta property="og:image" content="https://comevincerealfantasanremo.it/mockup-libro.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:locale" content="it_IT">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Il bot di Come Vincere al Fantasanremo">
+<meta name="twitter:description" content="Gli mandi la tua squadra, ti risponde con il metodo del libro.">
+<meta name="twitter:image" content="https://comevincerealfantasanremo.it/mockup-libro.jpg">
+
+<!-- Dati strutturati -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Bot AI Come vincere al Fantasanremo",
+  "brand": {
+    "@type": "Person",
+    "name": "Massimiliano Berto"
+  },
+  "url": "https://comevincerealfantasanremo.it/bot/",
+  "inLanguage": "it",
+  "description": "Assistente AI su Gemini che conosce il metodo del libro Come vincere al Fantasanremo e valuta la tua squadra. Attivo da dicembre a fine Festival.",
+  "offers": {
+    "@type": "Offer",
+    "price": "4.99",
+    "priceCurrency": "EUR",
+    "url": "https://comevincerealfanta.gumroad.com/l/fanta"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nero: #0b0b0c;
+    --nero-2: #141416;
+    --giallo: #ffc700;
+    --panna: #f5f3ee;
+    --grigio: #948f88;
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--nero);
+    color: var(--panna);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+  }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  a { color: inherit; }
+
+  a:focus-visible {
+    outline: 2px solid var(--giallo);
+    outline-offset: 3px;
+  }
+
+  /* ===== NAV ===== */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(11,11,12,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .nav .logo {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav .logo span { color: var(--giallo); }
+  .nav-cta {
+    background: var(--giallo);
+    color: var(--nero);
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 10px 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn-primary {
+    background: var(--giallo);
+    color: var(--nero);
+    font-weight: 800;
+    font-size: 15px;
+    padding: 16px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid rgba(245,243,238,0.25);
+    color: var(--panna);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 150px 0 90px;
+    text-align: center;
+  }
+  .hero .hero-copy {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--nero-2);
+    border: 1px solid rgba(255,199,0,0.35);
+    color: var(--giallo);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--giallo);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 74px);
+    color: var(--panna);
+  }
+  .hero p.lead {
+    margin: 22px auto 0;
+    font-size: 18px;
+    color: var(--grigio);
+    max-width: 48ch;
+  }
+  .hero-ctas {
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero .price-note {
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--grigio);
+  }
+
+  /* ===== SECTION SHARED ===== */
+  section { padding: 80px 0; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--giallo);
+    margin-bottom: 14px;
+  }
+  h2.display {
+    font-size: clamp(32px, 4.2vw, 48px);
+    margin-bottom: 20px;
+  }
+  .text-col { max-width: 62ch; }
+  .text-col p { color: var(--grigio); font-size: 17px; margin-bottom: 16px; }
+
+  /* ===== COSA FA ===== */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 40px;
+  }
+  .feature {
+    background: var(--nero);
+    padding: 30px 26px;
+  }
+  .feature h3 {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+  }
+  .feature p { color: var(--grigio); font-size: 15px; }
+
+  /* ===== COME SI ACCEDE ===== */
+  .access {
+    background: var(--nero-2);
+    border-radius: 24px;
+    padding: 64px;
+  }
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    margin-top: 32px;
+    display: grid;
+    gap: 22px;
+    max-width: 62ch;
+  }
+  .steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    align-items: start;
+    color: var(--grigio);
+    font-size: 17px;
+  }
+  .steps li::before {
+    content: counter(step);
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    color: var(--nero);
+    background: var(--giallo);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .steps li strong { color: var(--panna); font-weight: 700; }
+  .steps li a { color: var(--giallo); }
+
+  /* ===== AVVISO ===== */
+  .notice .text-col p { margin-bottom: 0; }
+
+  /* ===== CTA FINALE ===== */
+  .final-cta {
+    background: var(--giallo);
+    border-radius: 24px;
+    padding: 70px 48px;
+    text-align: center;
+    color: var(--nero);
+  }
+  .final-cta h2 { color: var(--nero); font-size: clamp(30px, 4.5vw, 48px); max-width: 18ch; margin: 0 auto 18px; }
+  .final-cta p { color: rgba(11,11,12,0.7); font-size: 17px; max-width: 44ch; margin: 0 auto 30px; }
+  .final-cta .btn-primary { background: var(--nero); color: var(--panna); }
+  .final-cta .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    margin-top: 16px;
+    color: rgba(11,11,12,0.6);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 0;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--grigio);
+  }
+  .footer-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--panna);
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+  .footer-social:hover { color: var(--giallo); }
+  .footer-social svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn-primary { transition: none; }
+  }
+
+  @media (max-width: 860px) {
+    .features { grid-template-columns: 1fr; }
+    .access { padding: 36px 26px; }
+    .final-cta { padding: 48px 26px; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="https://comevincerealfantasanremo.it/">Come Vincere<span>.</span></a>
+    <a href="https://comevincerealfantasanremo.it/" class="nav-cta">Il libro</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Bot AI per Sanremo 2027</div>
+        <h1 class="display">Manda la tua squadra.<br>Ricevi un secondo parere.</h1>
+        <p class="lead">Un assistente AI su Gemini che conosce il metodo del libro, le mie osservazioni sugli anni passati e le novità di questa edizione. Gli dai la formazione, ti risponde come risponderei io.</p>
+        <div class="hero-ctas">
+          <a href="https://comevincerealfanta.gumroad.com/l/fanta" target="_blank" rel="noopener" class="btn-primary js-buy" data-pos="hero">Compra il bot — 4,99€</a>
+          <a href="https://comevincerealfantasanremo.it/" class="btn-ghost">Vai al libro</a>
+        </div>
+        <div class="price-note">Attivo da dicembre fino a fine Festival</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COSA FA ===== -->
+  <section id="cosa-fa">
+    <div class="wrap">
+      <div class="section-label">Cosa fa</div>
+      <h2 class="display">Il libro ti dà il metodo.<br>Il bot lo applica alla tua squadra.</h2>
+      <div class="text-col">
+        <p>Dentro c'è tutto quello che leggi nel libro, più le mie osservazioni sugli anni passati. Lo usi quando hai bisogno di un confronto diretto.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>La tua squadra</h3>
+          <p>Gli mandi la formazione e ti dice se ha senso, con lo stesso criterio che uso io.</p>
+        </div>
+        <div class="feature">
+          <h3>Il capitano</h3>
+          <p>Un dubbio tra due nomi? Ragiona con i criteri del Capitolo 8.</p>
+        </div>
+        <div class="feature">
+          <h3>Gli artisti</h3>
+          <p>Se un artista dichiara che gioca, lo inserisco. Se dice che non partecipa, il bot lo sconsiglia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AGGIORNAMENTI ===== -->
+  <section id="aggiornamenti">
+    <div class="wrap">
+      <div class="section-label">Aggiornamenti</div>
+      <h2 class="display">Aggiornato man mano<br>che escono i dettagli.</h2>
+      <div class="text-col">
+        <p>Il regolamento del Fantasanremo cambia ogni anno e i cantanti in gara si sanno solo da fine novembre. Ogni settimana, durante la fase di monitoring, aggiungo cast, segnali dai social e novità del regolamento.</p>
+        <p>Lo aggiorno fino a poco prima del Festival: più lo consulti vicino all'inizio, più informazioni fresche trovi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COME SI ACCEDE ===== -->
+  <section id="accesso">
+    <div class="wrap">
+      <div class="access">
+        <div class="section-label">Come si accede</div>
+        <h2 class="display">Tre passaggi</h2>
+        <ol class="steps">
+          <li><div><strong>Acquisti il bot su Gumroad.</strong> 4,99€, una volta sola: poi lo consulti quante volte vuoi.</div></li>
+          <li><div><strong>Mandi il tuo indirizzo Google</strong> a <a href="mailto:massimilianoberto@gmail.com">massimilianoberto@gmail.com</a>. Serve per condividerti l'accesso.</div></li>
+          <li><div><strong>Ricevi l'accesso entro 24 ore</strong> e lo apri da Gemini. Funziona anche con un account Google personale, gratuito.</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AVVISO ===== -->
+  <section class="notice" id="avviso">
+    <div class="wrap">
+      <div class="section-label">Da sapere</div>
+      <h2 class="display">È un'AI.<br>Può sbagliare.</h2>
+      <div class="text-col">
+        <p>Il bot è un secondo parere, non una garanzia: può sbagliare, e posso sbagliare anch'io. Prima viene il metodo del libro, poi le tue percezioni. Il Fantasanremo ha sempre una parte di imprevedibilità che nessuno strumento elimina.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINALE ===== -->
+  <section>
+    <div class="wrap">
+      <div class="final-cta">
+        <h2 class="display">Un secondo parere sulla tua squadra.</h2>
+        <p>Attivo da dicembre fino a fine Festival. Accesso entro 24 ore dall'acquisto.</p>
+        <a href="https://comevincerealfanta.gumroad.com/l/fanta" target="_blank" rel="noopener" class="btn-primary js-buy" data-pos="finale">Compra il bot</a>
+        <div class="price">4,99€ — consultalo tutte le volte che vuoi</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>© Come Vincere al Fantasanremo</div>
+    <a href="https://instagram.com/comevincerealfantasanremo" target="_blank" rel="noopener" class="footer-social">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4.2"/>
+        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
+      </svg>
+      Seguici su Instagram per tips e strategie
+    </a>
+    <div>Massimiliano Berto</div>
+  </div>
+</footer>
+
+<script>
+  // Traccia i click sul pulsante di acquisto (evento GA4)
+  document.querySelectorAll('.js-buy').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'click_acquista_bot', { posizione: el.dataset.pos });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
